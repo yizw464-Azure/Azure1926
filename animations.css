@@ -1,0 +1,134 @@
+/* ============================================
+   Azure Future — Animations & Effects
+   Apple-style smooth transitions
+   ============================================ */
+
+/* Scroll-triggered reveal */
+.animate-on-scroll{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+.animate-on-scroll.visible{opacity:1;transform:translateY(0);}
+
+/* Stagger children */
+.stagger-children > *{opacity:0;transform:translateY(20px);}
+.stagger-children.visible > *:nth-child(1){transition:all .5s ease .1s;opacity:1;transform:translateY(0);}
+.stagger-children.visible > *:nth-child(2){transition:all .5s ease .2s;opacity:1;transform:translateY(0);}
+.stagger-children.visible > *:nth-child(3){transition:all .5s ease .3s;opacity:1;transform:translateY(0);}
+.stagger-children.visible > *:nth-child(4){transition:all .5s ease .4s;opacity:1;transform:translateY(0);}
+
+/* Float animation */
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.float{animation:float 4s ease-in-out infinite;}
+
+/* Glow pulse */
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(110,168,255,.1);}50%{box-shadow:0 0 40px rgba(110,168,255,.2);}}
+.glow-pulse{animation:glowPulse 3s ease-in-out infinite;}
+
+/* Gradient shift */
+@keyframes gradientShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.gradient-shift{background-size:200% 200%;animation:gradientShift 4s ease infinite;}
+
+/* Scale in */
+@keyframes scaleIn{from{opacity:0;transform:scale(.8);}to{opacity:1;transform:scale(1);}}
+.scale-in{animation:scaleIn .5s ease;}
+
+/* Slide up */
+@keyframes slideUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+.slide-up{animation:slideUp .6s ease;}
+
+/* Fade in */
+@keyframes fadeInSlow{from{opacity:0;}to{opacity:1;}}
+.fade-in-slow{animation:fadeInSlow 1s ease;}
+
+/* Number counting animation */
+.count-up{transition:all 2s ease;}
+
+/* Ripple effect for buttons */
+.btn-ripple{position:relative;overflow:hidden;}
+.btn-ripple::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle,rgba(255,255,255,.3) 10%,transparent 10%);
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:0;transition:opacity .5s,background-size .5s;
+  background-size:0 0;
+}
+.btn-ripple:active::after{background-size:200% 200%;opacity:1;transition:0s;}
+
+/* Card tilt on hover */
+.tilt-hover{transition:transform .3s ease;}
+.tilt-hover:hover{transform:perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-4px);}
+
+/* Loading spinner */
+.spinner{
+  width:24px;height:24px;border:3px solid rgba(255,255,255,.1);
+  border-top-color:var(--accent);border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* Progress bar indeterminate */
+.progress-indeterminate{
+  height:3px;border-radius:2px;background:rgba(255,255,255,.05);overflow:hidden;
+}
+.progress-indeterminate::after{
+  content:'';display:block;width:30%;height:100%;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  animation:progressSlide 1.5s ease-in-out infinite;
+}
+@keyframes progressSlide{0%{transform:translateX(-100%);}100%{transform:translateX(400%);}}
+
+/* Hover glow for cards */
+.hover-glow{transition:box-shadow .4s ease;}
+.hover-glow:hover{box-shadow:0 0 60px rgba(110,168,255,.08);}
+
+/* Text gradient animation */
+@keyframes textShimmer{0%{background-position:-200% center;}100%{background-position:200% center;}}
+.text-shimmer{
+  background:linear-gradient(90deg,var(--accent),var(--accent3),var(--accent)) 0 0/200% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:textShimmer 3s linear infinite;
+}
+
+/* Stagger reveal for sections */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal-up {
+  animation: revealUp 0.8s cubic-bezier(.25,.46,.45,.94) both;
+}
+.reveal-up:nth-child(1) { animation-delay: 0.1s; }
+.reveal-up:nth-child(2) { animation-delay: 0.2s; }
+.reveal-up:nth-child(3) { animation-delay: 0.3s; }
+.reveal-up:nth-child(4) { animation-delay: 0.4s; }
+.reveal-up:nth-child(5) { animation-delay: 0.5s; }
+
+/* Apple-style blur-in */
+@keyframes blurIn {
+  from { opacity: 0; filter: blur(20px); transform: scale(1.05); }
+  to { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+.blur-in { animation: blurIn 0.8s ease both; }
+
+/* Subtle border glow on hover */
+.hover-border-glow {
+  transition: border-color .4s ease, box-shadow .4s ease;
+}
+.hover-border-glow:hover {
+  border-color: rgba(110,168,255,.4);
+  box-shadow: 0 0 30px rgba(110,168,255,.08), inset 0 0 30px rgba(110,168,255,.02);
+}
+
+/* Smooth expand for feature sections */
+@keyframes expandWidth {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.expand-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  animation: expandWidth 1.2s cubic-bezier(.25,.46,.45,.94) both;
+}
